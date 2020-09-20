@@ -1,12 +1,13 @@
 import React from 'react'
 import {Image, StyleSheet, Text} from 'react-native'
-import RedScreen from '../components/RedScreen'
+import { ActivityIndicator, Colors } from 'react-native-paper';
 
+import RedScreen from '../components/RedScreen'
 export default function SplashScreen() {
     return (
         <RedScreen>
             <Image  style= {styles.image} source= {require('../assets/shopdharan-white.png')} />
-            <Text style={styles.text}>Please Wait</Text>
+            <ActivityIndicator animating={true} color={Colors.white} />
         </RedScreen>
     )
 }

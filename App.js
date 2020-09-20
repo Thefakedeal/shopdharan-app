@@ -6,6 +6,7 @@ import { useFonts } from "expo-font";
 import SplashScreen from "./screens/SplashScreen";
 import LoginScreen from './screens/LoginScreen'
 import SignupScreen from './screens/SignupScreen'
+import AuthNav from './navigations/AuthNav'
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -22,8 +23,7 @@ export default function App() {
   } 
     return (
       <View style={styles.container}>
-        {/* <LoginScreen/> */}
-        <SignupScreen />
+        <AuthNav />
       </View>
     );
   

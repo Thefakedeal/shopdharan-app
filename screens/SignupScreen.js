@@ -1,10 +1,13 @@
 import React, { useState, useReducer } from "react";
 import { ScrollView, StyleSheet } from "react-native";
 
+import authnav from '../defaults/authnav.json'
+import colors from '../defaults/colors.json'
 import LightScreen from "../components/LightScreen";
 import Logo from "../components/Logo";
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
+import CustomText from '../components/CustomText';
 
 const ACTIONS = {
   SETNAME: "setName",
@@ -31,7 +34,7 @@ function reducer(state, action) {
   }
 }
 
-export default function SignupScreen() {
+export default function SignupScreen({navigation}) {
   const [credentials, dispatch] = useReducer(reducer, {
     name: "",
     email: "",
@@ -87,6 +90,11 @@ export default function SignupScreen() {
         keyboardType={"phone-pad"}
       />
       <CustomButton>Signup</CustomButton>
+      <CustomText
+      color={colors.PRIMARY_RED}
+      onPress={()=>{
+            navigation.navigate(authnav.login)
+        }}> Already A User? </CustomText>
     </LightScreen>
   );
 }
