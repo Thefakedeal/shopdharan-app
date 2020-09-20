@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
     container:{
         flex:1,
         backgroundColor:  colors.PRIMARY_WHITE,
-        width: "100%"
+        width: "100%",
+        alignItems: "center"
     }
 })

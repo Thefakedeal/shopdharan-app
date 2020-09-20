@@ -5,6 +5,7 @@ import { useFonts } from "expo-font";
 
 import SplashScreen from "./screens/SplashScreen";
 import LoginScreen from './screens/LoginScreen'
+import SignupScreen from './screens/SignupScreen'
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -21,7 +22,8 @@ export default function App() {
   } 
     return (
       <View style={styles.container}>
-        <LoginScreen/>
+        {/* <LoginScreen/> */}
+        <SignupScreen />
       </View>
     );
   
@@ -30,7 +32,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    height: "100%",
     width:"100%",
     marginTop: StatusBar.currentHeight,
   },

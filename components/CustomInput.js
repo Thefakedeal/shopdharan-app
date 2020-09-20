@@ -9,6 +9,7 @@ export default function CustomInput({
   style,
   onChangeText,
   secureTextEntry,
+  keyboardType
 }) {
   return (
     <TextInput
@@ -17,6 +18,7 @@ export default function CustomInput({
       style={[styles.textBox, style]}
       mode="outlined"
       onChangeText={onChangeText}
+      keyboardType= {keyboardType}
       secureTextEntry={false || secureTextEntry}
       theme={{
         colors: {
@@ -30,7 +32,7 @@ export default function CustomInput({
 
 const styles = StyleSheet.create({
   textBox: {
-    margin: 10,
+    marginBottom:5,
     width: "80%",
     height: 40,
     color: colors.PRIMARY_RED,
