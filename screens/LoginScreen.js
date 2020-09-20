@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
-import {TextInput} from 'react-native-paper'
 import { StyleSheet} from 'react-native'
 
 import LightScreen from '../components/LightScreen'
 import Logo from '../components/Logo'
-import fonts from '../defaults/fontname.json'
-import colors from '../defaults/colors.json'
+import CustomInput from '../components/CustomInput'
+import CustomButton from '../components/CustomButton'
 
 export default function LoginScreen() {
     const [credentials, setCredentials] = useState({email:'', password:''});
@@ -24,20 +23,22 @@ export default function LoginScreen() {
     return (
         <LightScreen style={styles.container}>
             <Logo />
-            <TextInput label="Email" 
+            <CustomInput label={"Email"}
             value={credentials.email}
-            style={styles.textBox}
-            mode="outlined" 
             onChangeText={setEmail}
             />
-            <TextInput label="Password" 
+            <CustomInput label={"Password"}
             value={credentials.password}
-            style={styles.textBox}
-            mode="outlined" 
             secureTextEntry={true}
             onChangeText={setPassword}
-        underlineColor={'red'}
             />
+            <CustomButton 
+            onPress={()=>{
+                setCredentials({email:'',password:''})
+            } }
+            >
+                Login
+            </CustomButton>
         </LightScreen>
     )
 }
@@ -47,10 +48,6 @@ const styles = StyleSheet.create(
         container:{
             alignItems: "center"
         },
-        textBox:{
-            margin: 10,
-    
-        }
     }
 )
 

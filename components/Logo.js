@@ -11,9 +11,7 @@ const styles = StyleSheet.create(
     {
         image: {
             width: "80%",
-            padding: 40,
             resizeMode: "contain",
-            margin: 40
         },
     }
 )
