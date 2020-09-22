@@ -9,30 +9,25 @@ export default function OrderCard({
   title,
   price,
   imageURI,
-  unit = "kg",
-  minimum = 1,
-  maximum = 99,
-  step = 1,
 }) {
-  const [quantity, setQuantity] = useState(minimum);
+  const [quantity, setQuantity] = useState(1);
 
   const decreaseQuantity = () => {
-    if (quantity > minimum) setQuantity(quantity - step);
+    if (quantity > 1) setQuantity(quantity - 1);
   };
   const increaseQuantity = () => {
-    if (quantity < maximum) setQuantity(quantity + step);
+    if (quantity < 99) setQuantity(quantity + 1);
   };
   return (
     <Card
       style={{
         paddingHorizontal: 10,
-        paddingTop: 20,
         width: 320,
         marginRight: 5,
         marginVertical:3,
       }}
-    >
-      <Card.Title title={title} subtitle={`Rs. ${price} per ${unit}`} />
+    > 
+      <Card.Title title={title} subtitle={`Rs. ${price}`} />
       <Card.Cover
         source={{ uri: imageURI }}
         resizeMethod="resize"
