@@ -59,7 +59,7 @@ export default function SignupScreen({navigation}) {
     dispatch({ type: ACTIONS.SETNUMBER, payload: value });
   };
   return (
-    <LightScreen>
+    <LightScreen style={{alignItems:"center"}}>
       <Logo />
       <CustomInput
         label="Name"

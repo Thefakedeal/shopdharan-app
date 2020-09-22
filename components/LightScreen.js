@@ -22,6 +22,6 @@ const styles = StyleSheet.create({
         flex:1,
         backgroundColor:  colors.PRIMARY_WHITE,
         width: "100%",
-        alignItems: "center"
+        alignItems: "flex-start"
     }
 })
