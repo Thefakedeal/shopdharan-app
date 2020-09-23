@@ -49,6 +49,7 @@ export default function Restaurants() {
             title={restaurant.restaurant_name}
             description={restaurant.description}
             imageURI={restaurant.image}
+            id={restaurant.restaurant_id}
           />
         ))}
       </ScrollView>

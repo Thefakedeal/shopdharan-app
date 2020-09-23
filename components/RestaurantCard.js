@@ -1,7 +1,11 @@
 import React from "react";
 import { Card } from "react-native-paper";
+import homenav from "../defaults/homenav.json"
+import {useNavigation} from '@react-navigation/native';
 
-export default function RestaurantCard({ title, description, imageURI, onPress }) {
+export default function RestaurantCard({ title, description, imageURI, id}) {
+  const navigation = useNavigation();
+
   return (
     <Card
       style={{
@@ -10,7 +14,12 @@ export default function RestaurantCard({ title, description, imageURI, onPress }
         marginRight: 5,
         marginVertical:3,
       }}
-      onPress= {onPress}
+      onPress= {()=>{
+        navigation.navigate(homenav.restaurant,{
+          id: id,
+          title: title 
+        })
+      }}
       
     >
       <Card.Cover

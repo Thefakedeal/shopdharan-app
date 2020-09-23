@@ -10,6 +10,8 @@ import {
 import SplashScreen from "./screens/SplashScreen";
 import AuthNav from "./navigations/AuthNav";
 import HomePage from './screens/HomePage'
+import HomeNav from './navigations/HomeNav'
+import TabNav from './navigations/TabNav'
 
 export default function App() {
   return(
@@ -35,7 +37,9 @@ function Container(){
   if(continueWithouthLogin){
     return(
       <View style={styles.container}>
-        <HomePage />
+        {/* <HomePage /> */}
+        {/* <HomeNav /> */}
+        <TabNav />
       </View>
     )
   }

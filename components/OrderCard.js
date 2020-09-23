@@ -22,7 +22,6 @@ export default function OrderCard({
     <Card
       style={{
         paddingHorizontal: 10,
-        width: 320,
         marginRight: 5,
         marginVertical:3,
       }}

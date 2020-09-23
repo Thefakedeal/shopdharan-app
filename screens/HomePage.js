@@ -5,7 +5,7 @@ import LightScreen from "../components/LightScreen";
 import Restaurants from "../components/Restaurants";
 import OurProducts from "../components/OurProducts";
 
-export default function HomePage() {
+export default function HomePage({navigation}) {
   const [catagories, setCatagories] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -18,7 +18,7 @@ export default function HomePage() {
       })
       .catch((err) => {
         console.log(err);
-        // setLoading(false);
+        setLoading(false);
       });
   },[]);
 

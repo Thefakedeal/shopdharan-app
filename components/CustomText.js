@@ -10,7 +10,7 @@ export default function CustomText({ children, fontSize, color, onPress, style }
         fontFamily: font.Righteous,
         fontSize: fontSize || 20,
         color: color || colors.PRIMARY_RED,
-        marginVertical:1,
+        marginVertical:2,
       },style]}
       onPress={onPress}
     >
