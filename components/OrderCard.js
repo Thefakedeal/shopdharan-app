@@ -31,7 +31,7 @@ export default function OrderCard({
         source={{ uri: imageURI }}
         resizeMethod="resize"
         resizeMode="contain"
-        style={{ resizeMode: "contain", height: 200, width: 300 }}
+        style={{ resizeMode: "contain", height: 200, width: 300, alignSelf:"center" }}
       />
       <Card.Content>
         <View style={styles.quantity}>
@@ -43,8 +43,9 @@ export default function OrderCard({
             +
           </Button>
         </View>
-
+        <View style={{flex:1}}>
         <CustomButton>Add To Cart</CustomButton>
+        </View>
       </Card.Content>
     </Card>
   );

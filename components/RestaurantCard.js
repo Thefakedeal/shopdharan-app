@@ -26,7 +26,7 @@ export default function RestaurantCard({ title, description, imageURI, id}) {
         source={{ uri: imageURI }}
         resizeMethod="resize"
         resizeMode="contain"
-        style={{ resizeMode: "contain", height: 200, width:300 }}
+        style={{ resizeMode: "contain", height: 200, width:300, alignSelf:"center" }}
       />
       <Card.Title title={title} subtitle={description} />
     </Card>

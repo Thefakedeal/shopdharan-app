@@ -9,16 +9,17 @@ export default function CustomInput({
   style,
   onChangeText,
   secureTextEntry,
-  keyboardType
+  keyboardType,
 }) {
   return (
     <TextInput
+      accessibilityLabel={label}
       label={label}
       value={value}
       style={[styles.textBox, style]}
       mode="outlined"
       onChangeText={onChangeText}
-      keyboardType= {keyboardType}
+      keyboardType={keyboardType}
       secureTextEntry={false || secureTextEntry}
       theme={{
         colors: {
@@ -32,7 +33,7 @@ export default function CustomInput({
 
 const styles = StyleSheet.create({
   textBox: {
-    marginBottom:5,
+    marginBottom: 5,
     width: "80%",
     height: 40,
     color: colors.PRIMARY_RED,
