@@ -3,7 +3,7 @@ import { Card } from "react-native-paper";
 import homenav from "../defaults/homenav.json"
 import {useNavigation} from '@react-navigation/native';
 
-export default function RestaurantCard({ title, description, imageURI, id}) {
+export default function SupplierCard({ title, description, imageURI, id}) {
   const navigation = useNavigation();
 
   return (

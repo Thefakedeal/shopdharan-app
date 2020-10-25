@@ -1,4 +1,5 @@
 {
     "main" : "main",
-    "restaurant": "restaurant"
+    "restaurant": "restaurant",
+    "product": "product"
 }

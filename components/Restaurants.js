@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
 import CustomText from "./CustomText";
-import RestaurantCard from "./RestaurantCard";
+import SupplierCard from "./SupplierCard";
 import CustomSpinner from './CustomSpinner';
 
 export default function Restaurants() {
@@ -44,7 +44,7 @@ export default function Restaurants() {
     return (
       <ScrollView horizontal={true}>
         {restaurants.map((restaurant, index) => (
-          <RestaurantCard
+          <SupplierCard
             key={restaurant.restaurant_id}
             title={restaurant.restaurant_name}
             description={restaurant.description}

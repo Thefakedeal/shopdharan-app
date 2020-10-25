@@ -1,49 +1,22 @@
-import React, { useState } from "react";
-
+import React from "react";
 import colors from "../defaults/colors.json";
 import authnav from "../defaults/authnav.json";
 import LightScreen from "../components/LightScreen";
 import Logo from "../components/Logo";
-import CustomInput from "../components/CustomInput";
-import CustomButton from "../components/CustomButton";
+
 import CustomText from "../components/CustomText";
-import {useContinueWithoutLogin} from '../contexts/ContinueWithouthLogin'
+import LoginForm from '../forms/LoginForm'
+import { useContinueWithoutLogin } from "../contexts/LoginInfo";
+
 
 export default function LoginScreen({ navigation }) {
-  const [credentials, setCredentials] = useState({ email: "", password: "" });
-  const [ContinueWithouthLogin,setContinueWithoutLogin] = useContinueWithoutLogin()
-  const setEmail = (value) => {
-    setCredentials((credentials) => {
-      return { email: value, password: credentials.password };
-    });
-  };
 
-  const setPassword = (value) => {
-    setCredentials((credentials) => {
-      return { email: credentials.email, password: value };
-    });
-  };
+  const { setContinueWithoutLogin } = useContinueWithoutLogin();
+
   return (
-    <LightScreen style={{alignItems:"center"}}>
+    <LightScreen style={{ alignItems: "center" }}>
       <Logo />
-      <CustomInput
-        label={"Email"}
-        value={credentials.email}
-        onChangeText={setEmail}
-      />
-      <CustomInput
-        label={"Password"}
-        value={credentials.password}
-        secureTextEntry={true}
-        onChangeText={setPassword}
-      />
-      <CustomButton
-        onPress={() => {
-          setCredentials({ email: "", password: "" });
-        }}
-      >
-        Login
-      </CustomButton>
+      <LoginForm />
       <CustomText
         color={colors.PRIMARY_RED}
         onPress={() => {
@@ -55,7 +28,7 @@ export default function LoginScreen({ navigation }) {
       <CustomText
         color={colors.PRIMARY_RED}
         onPress={() => {
-          setContinueWithoutLogin(true)
+          setContinueWithoutLogin(true);
         }}
       >
         Continue Without Login

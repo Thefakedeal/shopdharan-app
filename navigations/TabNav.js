@@ -6,8 +6,10 @@ import { AntDesign } from "@expo/vector-icons";
 import colors from "../defaults/colors.json";
 import tabnav from "../defaults/tabnav.json";
 import HomeNav from "./HomeNav";
+import CartNav from "./CartNav"
 import SearchPage from '../screens/SearchPage'
 import SplashScreen from "../screens/SplashScreen";
+import UserScreen from '../screens/UserScreen'
 
 const Tab = createBottomTabNavigator();
 
@@ -47,8 +49,8 @@ export default function TabNav() {
       >
         <Tab.Screen name={tabnav.Home} component={HomeNav} />
         <Tab.Screen name={tabnav.Search} component={SearchPage} />
-        <Tab.Screen name={tabnav.Cart} component={SplashScreen} />
-        <Tab.Screen name={tabnav.User} component={SplashScreen} />
+        <Tab.Screen name={tabnav.Cart} component={CartNav} />
+        <Tab.Screen name={tabnav.User} component={UserScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );

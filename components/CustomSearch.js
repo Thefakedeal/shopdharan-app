@@ -19,6 +19,7 @@ export default function CustomSearch({label,style, value, onChangeText, onIconPr
       }}
       iconColor={colors.PRIMARY_RED}
       onChangeText={onChangeText}
+     
       onIconPress={onIconPress}
     />
   );

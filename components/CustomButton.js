@@ -2,7 +2,7 @@ import React from 'react'
 import {Button} from 'react-native-paper'
 import colors from '../defaults/colors.json'
 
-export default function CustomButton({children, onPress, disabled, contentStyle, style}) {
+export default function CustomButton({children, onPress, disabled, contentStyle, style, ...props}) {
     return (
         <Button mode={"contained"}
             dark={true}
@@ -11,6 +11,7 @@ export default function CustomButton({children, onPress, disabled, contentStyle,
             contentStyle={contentStyle}
             disabled={disabled}
             style= {style}
+            {...props}
         >
             {children}
         </Button>

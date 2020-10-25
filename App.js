@@ -1,47 +1,57 @@
 import React from "react";
-import { StyleSheet, Text, View, StatusBar } from "react-native";
+import { StyleSheet, View, StatusBar } from "react-native";
 import { useFonts } from "expo-font";
 
 import {
-  ContinueWithouthLogin,
+  LoginInfo,
+  useIsLoggedIn,
+  useLoading,
   useContinueWithoutLogin,
-} from "./contexts/ContinueWithouthLogin";
+} from "./contexts/LoginInfo";
+import {
+  Settings,
+  useLoading as useSettingsLoading,
+} from "./contexts/Settings";
+import { Cart, useLoading as useCartLoading } from "./contexts/Cart";
 
 import SplashScreen from "./screens/SplashScreen";
 import AuthNav from "./navigations/AuthNav";
-import HomePage from './screens/HomePage'
-import HomeNav from './navigations/HomeNav'
-import TabNav from './navigations/TabNav'
+import TabNav from "./navigations/TabNav";
 
 export default function App() {
-  return(
-    <ContinueWithouthLogin>
-        <Container />
-    </ContinueWithouthLogin>
-  )
+  return (
+    <Cart>
+      <Settings>
+        <LoginInfo>
+          <Container />
+        </LoginInfo>
+      </Settings>
+    </Cart>
+  );
 }
 
-function Container(){
+function Container() {
   let [fontsLoaded] = useFonts({
     "Inter-Black": require("./assets/fonts/Righteous-Regular.ttf"),
   });
-  const [continueWithouthLogin] = useContinueWithoutLogin()
-
-  if (!fontsLoaded) {
+  const { continueWithoutLogin } = useContinueWithoutLogin();
+  const cartLoading = useCartLoading();
+  const loading = useLoading();
+  const settingsLoading = useSettingsLoading();
+  const loggedIn = useIsLoggedIn();
+  if (!fontsLoaded || loading || settingsLoading || cartLoading) {
     return (
       <View style={styles.container}>
         <SplashScreen />
       </View>
     );
   }
-  if(continueWithouthLogin){
-    return(
+  if (continueWithoutLogin || loggedIn) {
+    return (
       <View style={styles.container}>
-        {/* <HomePage /> */}
-        {/* <HomeNav /> */}
         <TabNav />
       </View>
-    )
+    );
   }
   return (
     <View style={styles.container}>

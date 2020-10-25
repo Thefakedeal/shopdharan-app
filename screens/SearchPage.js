@@ -1,58 +1,70 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet } from "react-native";
-import { ScrollView } from "react-native";
+import { ScrollView, FlatList } from "react-native";
 
 import LightScreen from "../components/LightScreen";
 import CustomSearch from "../components/CustomSearch";
 import CustomButton from "../components/CustomButton";
 import CustomSpinner from "../components/CustomSpinner";
-import OrderCard from "../components/OrderCard";
+import ProductCard from "../components/ProductCard";
+import useProductSearch from "../hooks/useProductSearch";
+import baseURL from "../defaults/baseurl";
+
 
 export default function SearchPage() {
+  const [product_name, setProductName]= useState("")
   const [search, setSearch] = useState("");
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(0);
 
-  function ShowProducts() {
-    if (loading) return <CustomSpinner />;
-    return products.map((product) => (
-      <OrderCard
-        key={product.product_id}
-        title={product.product_name}
-        price={product.product_price}
-        imageURI={product.image}
-      />
-    ));
-  }
+  useEffect(()=>{
+    if(search === '') setProductName(search)
+  },[search])
 
-  function searchProduct() {
-    if(!search) return;
-    setLoading(true);
-    fetch(`http://192.168.0.104:5000/api/search?product_name=${search}`)
-      .then((resp) => resp.json())
-      .then((responseProduct) => {
-        setProducts(responseProduct);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
+  useEffect(()=>{
+    setPage(0)
+  },[product_name])
+
+  const { err, hasMore, loading, products } = useProductSearch({
+    product_name: product_name,
+    page_no: page,
+    available: true,
+  });
 
   return (
     <LightScreen style={styles.container}>
-      <ScrollView style={{width: "95%"}}>
-        <CustomSearch
-          label={"Search"}
-          value={search}
-          onChangeText={(value) => {
-            setSearch(value);
-          }}
-          onIconPress= {searchProduct}
-        />
-        <CustomButton onPress={searchProduct} style={{margin: 5}} >Search</CustomButton>
-        <ShowProducts />
-      </ScrollView>
+      <CustomSearch
+        label={"Search"}
+        value={search}
+        onChangeText={(value) => {
+          setSearch(value);
+        }}
+        onIconPress={()=>{
+          setProductName(search)
+        }}
+      />
+      <CustomButton style={{ margin: 5 }} 
+        onPress={()=>{
+          setProductName(search)
+        }}
+      >Search</CustomButton>
+      <FlatList
+        style={{ width: "100%" }}
+        data={products}
+        renderItem={({item}) => (
+          <ProductCard
+            id={item.product_id}
+            key={item.product_id}
+            title={item.product_name}
+            price={item.price}
+            imageURI={`${baseURL}/images/${item.image_id}`}
+          />
+        )}
+        keyExtractor={(product) => product.product_id}
+        onEndReached={()=>{
+          setPage(oldPage=> hasMore?oldPage+1:oldPage)
+        }}
+      />
+      {loading && <CustomSpinner />}
     </LightScreen>
   );
 }

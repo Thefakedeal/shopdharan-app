@@ -1,5 +1,5 @@
 import React from 'react'
-import {Image, StyleSheet, Text} from 'react-native'
+import {Image, StyleSheet} from 'react-native'
 import { ActivityIndicator, Colors } from 'react-native-paper';
 
 import RedScreen from '../components/RedScreen'
@@ -17,9 +17,4 @@ const styles = StyleSheet.create({
         width: "80%",
         resizeMode: "contain",
     },
-    text:{
-        color: '#FFF',
-        fontStyle: "italic",
-        fontWeight: "bold"
-    }
 })
