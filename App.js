@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, View, StatusBar } from "react-native";
 import { useFonts } from "expo-font";
 
+import CityScreen from './screens/CityScreen'
 import {
   LoginInfo,
   useIsLoggedIn,
@@ -11,6 +12,7 @@ import {
 import {
   Settings,
   useLoading as useSettingsLoading,
+  useSettings,
 } from "./contexts/Settings";
 import { Cart, useLoading as useCartLoading } from "./contexts/Cart";
 
@@ -37,6 +39,7 @@ function Container() {
   const { continueWithoutLogin } = useContinueWithoutLogin();
   const cartLoading = useCartLoading();
   const loading = useLoading();
+  const {settings} = useSettings();
   const settingsLoading = useSettingsLoading();
   const loggedIn = useIsLoggedIn();
   if (!fontsLoaded || loading || settingsLoading || cartLoading) {
@@ -47,11 +50,13 @@ function Container() {
     );
   }
   if (continueWithoutLogin || loggedIn) {
-    return (
-      <View style={styles.container}>
-        <TabNav />
-      </View>
-    );
+    if (!settings.city_id) return <CityScreen />
+      return (
+        <View style={styles.container}>
+          <TabNav />
+        </View>
+      );
+    
   }
   return (
     <View style={styles.container}>

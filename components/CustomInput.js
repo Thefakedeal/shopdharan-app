@@ -11,6 +11,7 @@ export default function CustomInput({
   errorText,
   onChangeText,
   onBlur,
+  numberOfLines,
   secureTextEntry,
   keyboardType,
   ...fields
@@ -22,6 +23,7 @@ export default function CustomInput({
         label={label}
         value={value}
         onBlur={onBlur}
+        numberOfLines={numberOfLines}
         errorText={errorText}
         style={[styles.textBox, style]}
         mode="outlined"

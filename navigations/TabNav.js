@@ -8,8 +8,7 @@ import tabnav from "../defaults/tabnav.json";
 import HomeNav from "./HomeNav";
 import CartNav from "./CartNav"
 import SearchPage from '../screens/SearchPage'
-import SplashScreen from "../screens/SplashScreen";
-import UserScreen from '../screens/UserScreen'
+import UserNav from './UserNav'
 
 const Tab = createBottomTabNavigator();
 
@@ -50,7 +49,7 @@ export default function TabNav() {
         <Tab.Screen name={tabnav.Home} component={HomeNav} />
         <Tab.Screen name={tabnav.Search} component={SearchPage} />
         <Tab.Screen name={tabnav.Cart} component={CartNav} />
-        <Tab.Screen name={tabnav.User} component={UserScreen} />
+        <Tab.Screen name={tabnav.User} component={UserNav} />
       </Tab.Navigator>
     </NavigationContainer>
   );

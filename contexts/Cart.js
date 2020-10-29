@@ -14,7 +14,7 @@ export function useErr() {
 }
 
 export function useCart() {
-  const [cart, addToCart, updateCartItemQuantity, removeFromCart] = useContext(
+  const [cart, addToCart, updateCartItemQuantity, removeFromCart, clearCart] = useContext(
     cartContext
   );
   return {
@@ -22,6 +22,7 @@ export function useCart() {
     addToCart,
     updateCartItemQuantity,
     removeFromCart,
+    clearCart
   };
 }
 
@@ -47,6 +48,10 @@ export function Cart({ children }) {
   useEffect(() => {
     AsyncStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
+
+  function clearCart(){
+    setCart([])
+  }
 
   function removeFromCart(product_id) {
     setCart((cart) => {
@@ -91,7 +96,7 @@ export function Cart({ children }) {
     <errContext.Provider value={err}>
       <loadingContext.Provider value={loading}>
         <cartContext.Provider
-          value={[cart, addToCart, updateCartItemQuantity, removeFromCart]}
+          value={[cart, addToCart, updateCartItemQuantity, removeFromCart, clearCart]}
         >
           {children}
         </cartContext.Provider>

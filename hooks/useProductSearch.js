@@ -6,11 +6,13 @@ export default function useProductSearch({
   product_name,
   page_no,
   available,
+  city_id,
 }) {
   const searchParams = new URLSearchParams();
   if (supplier_id) searchParams.append("supplier_id", supplier_id);
   if (product_name) searchParams.append("product_name", product_name);
   if (page_no) searchParams.append("page_no", page_no);
+  if (city_id) searchParams.append("city_id", city_id);
   if (available !== null || available !== undefined)
     searchParams.append("available", available);
   const url = `${baseURL}/api/products/search?${searchParams}`;

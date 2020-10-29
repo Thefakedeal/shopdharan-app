@@ -6,8 +6,8 @@ import fetchAccessToken from "./fetchAccessToken";
 export default async function fetchWithCredentials(method = "POST", url, body) {
   let accessToken = await AsyncStorage.getItem("accessToken");
   const refreshToken = await AsyncStorage.getItem("refreshToken");
-
   const isValid = await validateAccessToken(accessToken);
+ 
   if (!isValid){
     accessToken = await fetchAccessToken(refreshToken);
     AsyncStorage.setItem("accessToken", accessToken);

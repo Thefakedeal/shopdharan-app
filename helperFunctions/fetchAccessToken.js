@@ -1,7 +1,6 @@
 import baseURL from '../defaults/baseurl'
 export default async function fetchAccessToken(refreshToken){
     const data = {refreshToken};
-
     const response = await fetch(`${baseURL}/api/token`, {
         method: "POST",
         headers: {

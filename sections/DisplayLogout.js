@@ -7,7 +7,7 @@ import { useRefreshToken } from "../contexts/LoginInfo";
 
 export default function DisplayLogout() {
   const { refreshToken, setRefreshToken } = useRefreshToken();
-
+ 
   const [showSuccess, setShowSuccess] = useState(false);
   const [showFailed, setShowFailed] = useState(false);
 

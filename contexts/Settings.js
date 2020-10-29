@@ -45,9 +45,9 @@ export function Settings({ children }) {
           });
         }
         setLoading(false);
-      })
+      }) 
       .catch((err) => {
-        setLoading(false);
+        setLoading(false); 
       });
   }, []);
 

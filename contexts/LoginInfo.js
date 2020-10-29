@@ -61,7 +61,7 @@ export function LoginInfo({children}) {
             setAccessToken(accessToken);
             setLoading(false);
             setIsLoggedIn(true);
-            AsyncStorage.setItem('refreshToken', JSON.stringify(refreshToken))
+            AsyncStorage.setItem('refreshToken', refreshToken)
           })
           .catch((err) => {
             setLoading(false);
