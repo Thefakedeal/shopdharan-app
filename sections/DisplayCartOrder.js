@@ -5,7 +5,6 @@ import useFetchCost from "../hooks/useFetchCost";
 import CustomSpinner from "../components/CustomSpinner";
 import DisplayError from "../components/DisplayError";
 import CustomText from "../components/CustomText";
-import { useCart } from "../contexts/Cart";
 import DisplayCartTable from '../sections/DisplayCartTable'
 
 export default function DisplayCartOrder({cart}) {

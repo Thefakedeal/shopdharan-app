@@ -2,5 +2,7 @@
     "main": "usernavmainpage",
     "addresses": "useraddresses",
     "addaddress": "addaddresses",
-    "orders": "showallorders"
+    "orders": "showallorders",
+    "order": "showsingleorder",
+    "changepassword": "passwordchange"
 }

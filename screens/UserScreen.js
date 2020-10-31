@@ -8,6 +8,7 @@ import DisplayLogout from "../sections/DisplayLogout";
 import DisplayLogin from "../sections/DisplayLogin";
 import { useIsLoggedIn } from "../contexts/LoginInfo";
 import usernav from '../defaults/usernav.json'
+import tabnav from '../defaults/tabnav.json'
 import colors from '../defaults/colors.json'
 
 export default function UserPage() {
@@ -25,7 +26,7 @@ export default function UserPage() {
         right={()=> <AntDesign name="shoppingcart" size={30} color={colors.PRIMARY_RED} />}
         onPress={
           ()=>{
-            navigation.navigate(usernav.addresses)
+            navigation.navigate(tabnav.Cart)
           }
         }
       />
@@ -58,7 +59,7 @@ export default function UserPage() {
         onPress={
           ()=>{
             if(!isLoggedIn) return showVisible()
-            navigation.navigate(usernav.addresses)
+            navigation.navigate(usernav.changepassword)
           }
         }
       />

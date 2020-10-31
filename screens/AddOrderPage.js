@@ -12,6 +12,10 @@ import SelectAddress from "../sections/SelectAddress";
 import CustomButton from "../components/CustomButton";
 import { useCart } from "../contexts/Cart";
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 export default function AddOrderPage() {
   const navigation = useNavigation();
   const { cart = [] } = useCart();
@@ -34,6 +38,7 @@ export default function AddOrderPage() {
             try {
               const order = await addOrder(cart, address);
               order.order_id ? onSuccess() : onFail();
+              const pause = await sleep(1000)
               navigation.goBack();
             } catch (err) {
               onFail();

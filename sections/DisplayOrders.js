@@ -1,21 +1,14 @@
 import React from "react";
 import { FlatList, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { List } from "react-native-paper";
-
-
-const msToTime = (ms) => {
-  const minutes = Math.floor((ms / 60000) % 60);
-  const hours = Math.floor((ms / 3600000) % 24);
-  const days = Math.floor(ms / 86400000);
-  if (days > 0) return `${days} day(s) ago`;
-  if (hours > 0) return `${hours} hours ${minutes} minute(s) ago`;
-  return `${minutes} minute(s) ago`;
-};
+import usernav from "../defaults/usernav.json";
+import { msToTime } from "../helperFunctions/msToTime";
 
 export default function DisplayOrders({ orders = [] }) {
+  const navigation = useNavigation();
   return (
-    <View style={{flex:1, width:"100%"}}>
-  
+    <View style={{ flex: 1, width: "100%" }}>
       <FlatList
         data={orders}
         renderItem={({ item }) => {
@@ -26,7 +19,12 @@ export default function DisplayOrders({ orders = [] }) {
           return (
             <List.Item
               title={item.order_id}
-              description={display}
+              description={`${item.order_status}  ${display}`}
+              onPress={() => {
+                navigation.navigate(usernav.order, {
+                  order_id: item.order_id,
+                });
+              }}
             />
           );
         }}
