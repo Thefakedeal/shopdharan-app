@@ -7,7 +7,7 @@ import tabnav from '../defaults/tabnav.json'
 import usernav from "../defaults/usernav.json";
 import addOrder from "../helperFunctions/addOrder";
 import LightScreen from "../components/LightScreen";
-import DisplayCartOrder from "../sections/DisplayCartOrder";
+import DisplayAddOrder from "../sections/DisplayAddOrder";
 import SelectAddress from "../sections/SelectAddress";
 import CustomButton from "../components/CustomButton";
 import { useCart } from "../contexts/Cart";
@@ -66,7 +66,7 @@ export default function AddOrderPage() {
         >
           Add Address
         </CustomButton>
-        <DisplayCartOrder cart={cart} />
+        <DisplayAddOrder cart={cart} address_id={address} />
         <CustomButton
           mode="text"
           disabled={address && cart.length !== 0 ? false : true}

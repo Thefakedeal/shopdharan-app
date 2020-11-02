@@ -29,25 +29,24 @@ export default function useFetch(url) {
 
     const request = await fetch(url, options);
     if (!request.ok) {
-      setErr(request.statusText);
-      setLoading(false);
-      return;
+      throw await request.text() || request.statusText()
     }
     const result = await request.json();
-    setResult(result);
-    setLoading(false);
+    return result
   };
 
-  const fetchResources = () => {
+  const fetchResources = async () => {
     setLoading(true);
-    validations()
-      .then(() => {
-        fetchItems();
-      })
-      .catch((err) => {
-        setErr(err);
-        setLoading(false);
-      });
+    try{
+      await validations()
+      const result = await fetchItems()
+      setResult(result)
+    }catch(err){
+      setErr(err)
+    }finally{
+      setLoading(false)
+    }
+     
   };
 
   const reloadResources = fetchResources

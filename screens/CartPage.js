@@ -4,15 +4,12 @@ import { useNavigation } from "@react-navigation/native";
 
 import cartnav from "../defaults/cartnav.json";
 import DisplayCartOrder from '../sections/DisplayCartOrder'
-import useFetchCost from "../hooks/useFetchCost";
 import CustomButton from "../components/CustomButton";
-import CustomSpinner from "../components/CustomSpinner";
-import DisplayError from "../components/DisplayError";
+
 import LightScreen from "../components/LightScreen";
 import CustomText from "../components/CustomText";
 import {useIsLoggedIn} from '../contexts/LoginInfo'
 import { useCart } from "../contexts/Cart";
-import DisplayCartTable from "../sections/DisplayCartTable";
 
 export default function CartPage() {
   const { cart, clearCart } = useCart();
