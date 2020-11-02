@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import baseURL from "../defaults/baseurl";
 
-export default function useFetchCost({ cart = [], address_id}) {
+export default function useFetchCost({ cart = []}) {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState({
     cart_orders: [],
@@ -12,8 +12,7 @@ export default function useFetchCost({ cart = [], address_id}) {
   const [err, setErr] = useState();
 
   useEffect(() => {
-  
-    if (cart.length === 0 || !address_id) {
+    if (cart.length === 0) {
       setResult({
         cart_orders: [],
         deliveryCharge: 0,
@@ -23,14 +22,13 @@ export default function useFetchCost({ cart = [], address_id}) {
       return;
     }
     setLoading(true);
-    fetch(`${baseURL}/api/user/orders/getcost`, {
+    fetch(`${baseURL}/api/user/orders/getproductcost`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
       body: JSON.stringify({
         orders: cart,
-        address_id: address_id
       }),
     })
       .then(async (response) => {
@@ -47,7 +45,7 @@ export default function useFetchCost({ cart = [], address_id}) {
       .finally(() => {
         setLoading(false);
       });
-  }, [cart,address_id]);
+  }, [cart]);
 
   return { err, loading, result };
 }

@@ -12,6 +12,9 @@ export default function DisplayCost({total, deliveryCharge, numOfSuppliers}) {
       <Text style={{ alignSelf: "center" }}>
         {`Delivery Charge extra, Rs.${deliveryCharge} for ${numOfSuppliers} suppler(s).`}
       </Text>
+      <Text style={{ alignSelf: "center" }}>
+          Delivery Charge is Extra for Ordering From Different City.
+        </Text>
     </>
   );
 }
