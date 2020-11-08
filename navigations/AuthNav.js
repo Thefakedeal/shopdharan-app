@@ -5,6 +5,8 @@ import  {createStackNavigator} from '@react-navigation/stack'
 import authnav from '../defaults/authnav.json'
 import LoginScreen from '../screens/LoginScreen';
 import SignupScreen from '../screens/SignupScreen'
+import RequestPinScreen from '../screens/RequestPinScreen'
+import ResetPasswordScreen from '../screens/ResetPasswordScreen'
 
 const Stack = createStackNavigator();
 
@@ -19,7 +21,15 @@ export default function AuthNav() {
                 <Stack.Screen name={authnav.signup} component = {SignupScreen}
                 options={{
                     headerShown: false}}
+                />
+                <Stack.Screen name={authnav.requestpin} component = {RequestPinScreen}
+                options={{
+                    headerShown: false}}
                 /> 
+                <Stack.Screen name={authnav.resetpassword} component = {ResetPasswordScreen}
+                options={{
+                    headerShown: false}}
+                />  
             </Stack.Navigator>
         </NavigationContainer>
     )

@@ -17,7 +17,7 @@ export default function DisplaySupplierByCatagory({ title, id, city_id }) {
 
   if (loading) return <CustomSpinner />;
   if (err) return <DisplayError errorText={err} />;
-  if (result)
+  if (result.length>0)
     return (
       <View style={styles.container}>
         <CustomText> {title}</CustomText>

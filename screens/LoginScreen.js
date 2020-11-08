@@ -28,6 +28,14 @@ export default function LoginScreen({ navigation }) {
       <CustomText
         color={colors.PRIMARY_RED}
         onPress={() => {
+          navigation.navigate(authnav.requestpin);
+        }}
+      >
+        Forgot Password?
+      </CustomText>
+      <CustomText
+        color={colors.PRIMARY_RED}
+        onPress={() => {
           setContinueWithoutLogin(true);
         }}
       >
