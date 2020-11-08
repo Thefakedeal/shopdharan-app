@@ -6,8 +6,8 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
-      // "image": "./assets/shopdharan-white.png",
-      // "resizeMode": "contain",
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
       "backgroundColor": "#FF2D2D"
     },
     "updates": {
@@ -20,7 +20,7 @@
       "supportsTablet": true
     },
     "web": {
-      "favicon": "./assets/shopdharan.png"
+      "favicon": "./assets/favicon.png"
     }
   }
 }
