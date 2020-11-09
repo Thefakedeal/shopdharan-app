@@ -3,11 +3,11 @@ import { View, Alert } from "react-native";
 import { Snackbar } from "react-native-paper";
 import logout from "../helperFunctions/logout";
 import CustomButtom from "../components/CustomButton";
-import { useRefreshToken } from "../contexts/LoginInfo";
+import { useRefreshToken,useAccessToken } from "../contexts/LoginInfo";
 
 export default function DisplayLogout() {
   const { refreshToken, setRefreshToken } = useRefreshToken();
- 
+  const {setAccessToken} = useAccessToken()
   const [showSuccess, setShowSuccess] = useState(false);
   const [showFailed, setShowFailed] = useState(false);
 
@@ -16,7 +16,7 @@ export default function DisplayLogout() {
       const loggedout = await logout(refreshToken);
       if (loggedout) {
         setRefreshToken("");
-
+        setAccessToken('')
         setShowSuccess(true);
         return;
       }
